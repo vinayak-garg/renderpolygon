@@ -10,7 +10,6 @@ body
 	background: #333333;
 	font-family: 'Varela', sans-serif;
 	font-size: 11pt;
-	font-weight: 300;
 	color: #656565;
 }
 
@@ -556,13 +555,18 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
 	margin-top: 5em;
 }
 
-#extra .fa
+.cell
 {
-	display: block;
-	margin-bottom: 0.5em;
-	text-align: center;
-	font-size: 3em;
+	height: 2em;
+	width: 2em; 
+	border: solid #000 0.1em;
+	display: inline-block;
+	margin: 0.5em;
+	cursor: pointer;
 }
 
-
-
+.selected
+{
+	border: solid #f60 0.3em;
+	margin: 0.3em;
+}

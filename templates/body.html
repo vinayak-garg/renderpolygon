@@ -8,23 +8,26 @@
 	<div id="extra" class="container">
 		<div id="three-column">
 			<div class="boxA">
-				<div class="box"> <span class="fa fa-cloud-download"></span>
-					<p>Select type of polygon</p>
-					<input type="radio" name="poly_type" value="triangle"/> Triangle<br>
-					<input type="radio" name="poly_type" value="quad"/> Quadrilateral
+				<div class="box">
+					<p><b>Select type of polygon</b></p>
+					<input type="radio" name="poly_type" value="tri"/> Triangle<br>
+					<input type="radio" name="poly_type" value="quad"/> Quadrilateral<br><br>
+					<p><b>Select canvas size</b></p>
+					<input type="radio" name="cnv_size" value="1" checked/> 320x240<br>
+					<input type="radio" name="cnv_size" value="2"/> 640x480<br>
+					<input type="radio" name="cnv_size" value="3"/> 800x600
 				</div>
 			</div>
 			<div class="boxB">
-				<div class="box"> <span class="fa fa-cogs"></span>
-					<p>Enter Coordinates</p>
-					X1 <input type="text" size="3"> Y1 <input type="text" size="3"> Z1 <input type="text" size="3"><br>
-					X1 <input type="text" size="3"> Y1 <input type="text" size="3"> Z1 <input type="text" size="3"><br>
-					X1 <input type="text" size="3"> Y1 <input type="text" size="3"> Z1 <input type="text" size="3"><br>
+				<div class="box">
+					<p><b>Enter Coordinates</b></p>
+					<div id="coords"></div>
 				</div>
 			</div>
 			<div class="boxC">
-				<div class="box"> <span class="fa fa-user"></span>
-					<p>Choose color for surface</p>
+				<div class="box">
+					<p><b>Choose color for surface</b></p>
+					<div id="colorpicker"></div>
 				</div>
 			</div>
 		</div>
@@ -36,7 +39,8 @@
 		<div class="container">
 			<div id="rp_canvas"></div>
 				<script type="text/javascript">
-
+	colorpicker();
+	$('#c0').click()
 	// set the scene size
 	var WIDTH = 800,
 	    HEIGHT = 600;
