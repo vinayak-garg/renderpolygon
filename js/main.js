@@ -1,3 +1,5 @@
+triangles = []
+
 function draw(WIDTH,HEIGHT){
 	// set the scene size
 	//var WIDTH = 800,
@@ -48,7 +50,7 @@ function draw(WIDTH,HEIGHT){
 	   sphereMaterial);
 
 	// add the sphere to the scene
-	scene.add(sphere);
+	//scene.add(sphere);
 
 	// and the camera
 	scene.add(camera);
@@ -64,6 +66,19 @@ function draw(WIDTH,HEIGHT){
 	// add to the scene
 	scene.add(pointLight);
 
+	var triangleGeometry = new THREE.Geometry();
+	triangleGeometry.vertices.push(new THREE.Vector3( 0.0,  100.0, 0.0));
+	triangleGeometry.vertices.push(new THREE.Vector3(-100.0, -1.0, 0.0));
+	triangleGeometry.vertices.push(new THREE.Vector3( 10.0, -10.0, 20.0));
+	triangleGeometry.faces.push(new THREE.Face3(0, 1, 2));
+	var triangleMaterial = new THREE.MeshBasicMaterial({
+		color:0xFFFFFF,
+		side:THREE.DoubleSide
+	});
+	var triangleMesh = new THREE.Mesh(triangleGeometry, triangleMaterial);
+	triangleMesh.position.set(-1.5, 0.0, 4.0);
+	scene.add(triangleMesh);
+
 	// draw!
 	renderer.render(scene, camera);	
 }
@@ -74,11 +89,11 @@ function polyType(){
 	$('#coords').html('');
 	for(var i=1; i<=p; i++){
 		$('#coords').append('X'+i+' ');
-		$('#coords').append('<input type="text" size="3"> ');
+		$('#coords').append('<input type="text" size="3" id="x'+i+'"> ');
 		$('#coords').append('Y'+i+' ');
-		$('#coords').append('<input type="text" size="3"> ');
+		$('#coords').append('<input type="text" size="3" id="y'+i+'"> ');
 		$('#coords').append('Z'+i+' ');
-		$('#coords').append('<input type="text" size="3">');
+		$('#coords').append('<input type="text" size="3" id="z'+i+'">');
 		$('#coords').append('<br>');
 	}
 }
@@ -90,11 +105,27 @@ function cnvSize(){
 	else if (opt==3)draw(800,600);
 }
 
+function render(){
+	x1=$('#x1').val()
+	y1=$('#y1').val()
+	z1=$('#z1').val()
+	x2=$('#x2').val()
+	y2=$('#y2').val()
+	z2=$('#z2').val()
+	x3=$('#x3').val()
+	y3=$('#y3').val()
+	z3=$('#z3').val()
+	//var tri=
+	//console.log($('input:radio[name=poly_type]').val());
+	//alert();
+}
+
 $(document).ready(function(){
 	$('input:radio[name=poly_type]').click(polyType);
 	$('input:radio[name=poly_type][value=tri]').click();
 	$('input:radio[name=cnv_size]').click(cnvSize);
 	$('input:radio[name=cnv_size][value=1]').click();
+	$('#render_btn').click(render);
 	colorpicker();
 	$('#c0').click()
 	//draw(320,240);
