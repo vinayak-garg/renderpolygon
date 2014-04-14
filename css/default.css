@@ -212,11 +212,6 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
 /* Heading Titles                                                                */
 /*********************************************************************************/
 
-.title
-{
-	margin-bottom: 3em;
-}
-
 .title h2
 {
 	font-size: 2.4em;
@@ -393,16 +388,11 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
 #banner
 {
 	overflow: hidden;
-	padding: 5em 0em;
+	padding: 2em 0em;
 	background: #202020;
 	background-size: cover;
 	text-align: center;
 	color: rgba(255,255,255,.8);
-}
-
-#banner .title
-{
-	margin-bottom: 1em;
 }
 
 #banner .title h2
@@ -427,7 +417,7 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
 
 #page
 {
-	padding: 5em 0em;
+	padding: 2em 0em;
 	text-align: center;
 }
 
@@ -469,7 +459,7 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
 #copyright
 {
 	overflow: hidden;
-	padding: 3em 0em;
+	padding: 2em 0em;
 	border-top: 1px solid rgba(255,255,255,0.08);
 }
 
@@ -493,7 +483,7 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
 #featured
 {
 	overflow: hidden;
-	padding: 5em 0em;
+	padding: 2em 0em;
 	background: #009E2D;
 	color: rgba(255,255,255,.8);
 	text-align: center;
@@ -542,7 +532,7 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
 #extra
 {
 	overflow: hidden;
-	padding: 5em 0em;
+	padding: 3em 0em;
 }
 
 #extra .title
