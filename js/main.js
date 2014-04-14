@@ -1,7 +1,8 @@
-triangles = []
+var triangles = [];
+var WIDTH, HEIGHT;
+var tcolors = [];
 
-function draw(WIDTH,HEIGHT){
-	// set the scene size
+function draw(){
 	//var WIDTH = 800,
 	  //  HEIGHT = 600;
 
@@ -11,8 +12,6 @@ function draw(WIDTH,HEIGHT){
 	    NEAR = 0.1,
 	    FAR = 10000;
 
-	// get the DOM element to attach to
-	// - assume we've got jQuery to hand
 	var $container = $('#rp_canvas');
 	$container.html('');
 
@@ -66,19 +65,21 @@ function draw(WIDTH,HEIGHT){
 	// add to the scene
 	scene.add(pointLight);
 
-	var triangleGeometry = new THREE.Geometry();
-	triangleGeometry.vertices.push(new THREE.Vector3( 0.0,  100.0, 0.0));
-	triangleGeometry.vertices.push(new THREE.Vector3(-100.0, -1.0, 0.0));
-	triangleGeometry.vertices.push(new THREE.Vector3( 10.0, -10.0, 20.0));
-	triangleGeometry.faces.push(new THREE.Face3(0, 1, 2));
-	var triangleMaterial = new THREE.MeshBasicMaterial({
-		color:0xFFFFFF,
-		side:THREE.DoubleSide
-	});
-	var triangleMesh = new THREE.Mesh(triangleGeometry, triangleMaterial);
-	triangleMesh.position.set(-1.5, 0.0, 4.0);
-	scene.add(triangleMesh);
-
+	for (var i=0; i<triangles.length; i++){
+		var triangleGeometry = new THREE.Geometry();
+		triangleGeometry.vertices.push(new THREE.Vector3(triangles[i][0], triangles[i][1], triangles[i][2]));
+		triangleGeometry.vertices.push(new THREE.Vector3(triangles[i][3], triangles[i][4], triangles[i][5]));
+		triangleGeometry.vertices.push(new THREE.Vector3(triangles[i][6], triangles[i][7], triangles[i][8]));
+		triangleGeometry.faces.push(new THREE.Face3(0, 1, 2));
+		var triangleMaterial = new THREE.MeshBasicMaterial({
+			color:parseInt(colors[tcolors[i]], 16),
+			side:THREE.DoubleSide
+		});
+		var triangleMesh = new THREE.Mesh(triangleGeometry, triangleMaterial);
+		triangleMesh.position.set(-1.5, 0.0, 4.0);
+		scene.add(triangleMesh);
+	}
+	
 	// draw!
 	renderer.render(scene, camera);	
 }
@@ -100,21 +101,25 @@ function polyType(){
 
 function cnvSize(){
 	var opt=$(this).val();
-	if(opt==1)draw(320,240);
-	else if (opt==2)draw(640,480);
-	else if (opt==3)draw(800,600);
+	if(opt==1){WIDTH=320;HEIGHT=240;}
+	else if (opt==2){WIDTH=640;HEIGHT=480;}
+	else if (opt==3){WIDTH=800;HEIGHT=600;}
+	draw();
 }
 
 function render(){
-	x1=$('#x1').val()
-	y1=$('#y1').val()
-	z1=$('#z1').val()
-	x2=$('#x2').val()
-	y2=$('#y2').val()
-	z2=$('#z2').val()
-	x3=$('#x3').val()
-	y3=$('#y3').val()
-	z3=$('#z3').val()
+	x1=$('#x1').val();
+	y1=$('#y1').val();
+	z1=$('#z1').val();
+	x2=$('#x2').val();
+	y2=$('#y2').val();
+	z2=$('#z2').val();
+	x3=$('#x3').val();
+	y3=$('#y3').val();
+	z3=$('#z3').val();
+	triangles.push([x1, y1, z1, x2, y2, z2, x3, y3, z3]);
+	tcolors.push(selectedColorIndex);
+	draw();
 	//var tri=
 	//console.log($('input:radio[name=poly_type]').val());
 	//alert();
