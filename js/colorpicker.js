@@ -1,16 +1,14 @@
 var selectedColorIndex = 0;
 var colors = [
-	'000000', '333333', '666666', '999999', 'cccccc', 'ffffff',
-	'330000', '660000',	'990000', 'cc0000', 'ff0000', '00ffff',
-	'003300', '006600', '009900', '00cc00', '00ff00', '00cccc',
-	'000033', '000066', '000099', '0000cc', '0000ff', '009999',
-	'333300', '666600', '999900', 'cccc00', 'ffff00', '006666',
-	'330033', '660066', '990099', 'cc00cc', 'ff00ff', '003333'
+	'ffffff', 'ff0000', '00ff00', '0000ff', 'ffff00', 'ff00ff',	'00ffff', '660000',	
+	'cccccc', 'cc0000', '00cc00', '0000cc',	'cccc00', 'cc00cc', '00cccc', '00cc00',
+	'999999', '990000',	'009900', '000099', '999900', '990099', '009999', '009999',
+	'000000', '660000', '006600', '000066', '666600', '660066',	'006666', '660066'
 ];
 
 function colorpicker(){
 	var e=$('#colorpicker');
-	for(var i=0; i<36; i++){
+	for(var i=0; i<32; i++){
 		e.append('<div id="c'+i+'" class="cell">&nbsp;</div>');
 		$('#c'+i).css({'background-color': '#'+colors[i]});
 		$('#c'+i).click({index:i}, colorpick);
@@ -18,7 +16,7 @@ function colorpicker(){
 }
 
 function colorpick(event){
-	for(var i=0; i<36; i++){
+	for(var i=0; i<32; i++){
 		$('#c'+i).removeClass('selected');
 	}
 	selectedColorIndex=event.data.index;

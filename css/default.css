@@ -184,10 +184,10 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
 .button
 {
 	display: inline-block;
-	padding: 0em 3em;
+	padding: 0em 2em;
 	background: #009E2D;
 	letter-spacing: 0.20em;
-	line-height: 4em;
+	line-height: 3em;
 	text-decoration: none;
 	text-transform: uppercase;
 	font-weight: 400;
@@ -547,16 +547,25 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
 
 .cell
 {
-	height: 2em;
-	width: 2em; 
+	height: 1.4em;
+	width: 1.4em; 
 	border: solid #000 0.1em;
 	display: inline-block;
-	margin: 0.5em;
+	margin: 0.4em;
 	cursor: pointer;
 }
 
 .selected
 {
 	border: solid #f60 0.3em;
-	margin: 0.3em;
+	margin: 0.2em;
+}
+
+table, tr, td, th
+{
+	border:1px solid #006;
+}
+td, th
+{
+	padding: 0.5em;
 }

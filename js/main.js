@@ -119,7 +119,9 @@ function render(){
 	z3=$('#z3').val();
 	triangles.push([x1, y1, z1, x2, y2, z2, x3, y3, z3]);
 	tcolors.push(selectedColorIndex);
+	$('#object_table').append('<tr><td>Triangle</td><td>['+x1+', '+y1+', '+z1+']</td><td>EDIT</td><td>Delete</td></tr>')
 	draw();
+	return false;
 	//var tri=
 	//console.log($('input:radio[name=poly_type]').val());
 	//alert();
@@ -133,5 +135,4 @@ $(document).ready(function(){
 	$('#render_btn').click(render);
 	colorpicker();
 	$('#c0').click()
-	//draw(320,240);
 });
