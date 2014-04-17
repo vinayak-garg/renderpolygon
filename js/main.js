@@ -3,12 +3,6 @@ var WIDTH, HEIGHT;
 var tcolors = [];
 
 function draw(){
-	// set some camera attributes
-	var LEFT = 45,
-	    ASPECT = WIDTH / HEIGHT,
-	    NEAR = 0.1,
-	    FAR = 10000;
-
 	var $container = $('#rp_canvas');
 	$container.html('');
 
@@ -27,37 +21,8 @@ function draw(){
 	// attach the render-supplied DOM element
 	$container.append(renderer.domElement);
 
-	// create the sphere's material
-	var sphereMaterial = new THREE.MeshLambertMaterial(
-	{
-	    color: 0xCC0000
-	});
-
-	// set up the sphere vars
-	var radius = 50, segments = 16, rings = 16;
-
-	// create a new mesh with sphere geometry -
-	// we will cover the sphereMaterial next!
-	var sphere = new THREE.Mesh(
-	   new THREE.SphereGeometry(radius, segments, rings),
-	   sphereMaterial);
-
-	// add the sphere to the scene
-	//scene.add(sphere);
-
 	// and the camera
 	scene.add(camera);
-
-	// create a point light
-	var pointLight = new THREE.PointLight( 0xFFFFFF );
-
-	// set its position
-	pointLight.position.x = 10;
-	pointLight.position.y = 50;
-	pointLight.position.z = 130;
-
-	// add to the scene
-	//scene.add(pointLight);
 
 	for (var i=0; i<triangles.length; i++){
 		var triangleGeometry = new THREE.Geometry();
