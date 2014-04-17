@@ -561,11 +561,19 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
 	margin: 0.2em;
 }
 
-table, tr, td, th
+td
 {
-	border:1px solid #006;
-}
-td, th
-{
+	border-bottom:2px solid #006;
 	padding: 0.5em;
+}
+
+tr:hover
+{
+	background: #ffffcc;
+}
+
+#icon
+{
+	width: 24px;
+	height: 24px;
 }

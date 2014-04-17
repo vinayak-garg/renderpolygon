@@ -3,11 +3,8 @@ var WIDTH, HEIGHT;
 var tcolors = [];
 
 function draw(){
-	//var WIDTH = 800,
-	  //  HEIGHT = 600;
-
 	// set some camera attributes
-	var VIEW_ANGLE = 45,
+	var LEFT = 45,
 	    ASPECT = WIDTH / HEIGHT,
 	    NEAR = 0.1,
 	    FAR = 10000;
@@ -18,10 +15,7 @@ function draw(){
 	// create a WebGL renderer, camera
 	// and a scene
 	var renderer = new THREE.WebGLRenderer();
-	var camera = new THREE.PerspectiveCamera(  VIEW_ANGLE,
-	                                ASPECT,
-	                                NEAR,
-	                                FAR  );
+	var camera = new THREE.OrthographicCamera(WIDTH/-2, WIDTH/2, HEIGHT/2, HEIGHT/-2 , NEAR, FAR);
 	var scene = new THREE.Scene();
 
 	// the camera starts at 0,0,0 so pull it back
@@ -63,7 +57,7 @@ function draw(){
 	pointLight.position.z = 130;
 
 	// add to the scene
-	scene.add(pointLight);
+	//scene.add(pointLight);
 
 	for (var i=0; i<triangles.length; i++){
 		var triangleGeometry = new THREE.Geometry();
@@ -82,6 +76,24 @@ function draw(){
 	
 	// draw!
 	renderer.render(scene, camera);	
+}
+
+function updateTable(){
+	$('#object_table').html('');
+	for (var i=0; i<triangles.length; i++){
+		s='<tr><td>';
+		if($('input:radio[name=poly_type]').val()=='tri'){
+			s+='Triangle';
+		}else{
+			s+='Quadrilateral';
+		}
+		s+='</td><td>'+'<div class="cell" style="background:#'+colors[tcolors[i]]+'">&nbsp;</div></td>';
+		s+='<td>('+triangles[i][0]+', '+triangles[i][1]+', '+triangles[i][2]+'), ';
+		s+='('+triangles[i][3]+', '+triangles[i][4]+', '+triangles[i][5]+'), ';
+		s+='('+triangles[i][6]+', '+triangles[i][7]+', '+triangles[i][8]+')</td>';
+		s+='<td><a href="#"><img src="/img/edit.png" id="icon"></a> <a href="#"><img src="/img/delete.png" id="icon"></a></td></tr>';
+		$('#object_table').append(s);
+	}
 }
 
 function polyType(){
@@ -119,12 +131,9 @@ function render(){
 	z3=$('#z3').val();
 	triangles.push([x1, y1, z1, x2, y2, z2, x3, y3, z3]);
 	tcolors.push(selectedColorIndex);
-	$('#object_table').append('<tr><td>Triangle</td><td>['+x1+', '+y1+', '+z1+']</td><td>EDIT</td><td>Delete</td></tr>')
+	updateTable();
 	draw();
 	return false;
-	//var tri=
-	//console.log($('input:radio[name=poly_type]').val());
-	//alert();
 }
 
 $(document).ready(function(){
