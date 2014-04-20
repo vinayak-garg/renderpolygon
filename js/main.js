@@ -3,17 +3,19 @@ var WIDTH, HEIGHT;
 var tcolors = [];
 
 function draw(){
+	var NEAR = 10000, FAR = -10000;
 	var $container = $('#rp_canvas');
 	$container.html('');
 
 	// create a WebGL renderer, camera
 	// and a scene
 	var renderer = new THREE.WebGLRenderer();
-	var camera = new THREE.OrthographicCamera(WIDTH/-2, WIDTH/2, HEIGHT/2, HEIGHT/-2 , NEAR, FAR);
+	var camera = new THREE.OrthographicCamera(0, WIDTH, 0, HEIGHT , NEAR, FAR);
 	var scene = new THREE.Scene();
 
 	// the camera starts at 0,0,0 so pull it back
-	camera.position.z = 300;
+	camera.position.z = -3000;
+	//camera.up.set(0, 0, 1);
 
 	// start the renderer
 	renderer.setSize(WIDTH, HEIGHT);
@@ -26,16 +28,16 @@ function draw(){
 
 	for (var i=0; i<triangles.length; i++){
 		var triangleGeometry = new THREE.Geometry();
-		triangleGeometry.vertices.push(new THREE.Vector3(triangles[i][0], triangles[i][1], triangles[i][2]));
-		triangleGeometry.vertices.push(new THREE.Vector3(triangles[i][3], triangles[i][4], triangles[i][5]));
-		triangleGeometry.vertices.push(new THREE.Vector3(triangles[i][6], triangles[i][7], triangles[i][8]));
+		triangleGeometry.vertices.push(new THREE.Vector3(triangles[i][0], triangles[i][1], -triangles[i][2]));
+		triangleGeometry.vertices.push(new THREE.Vector3(triangles[i][3], triangles[i][4], -triangles[i][5]));
+		triangleGeometry.vertices.push(new THREE.Vector3(triangles[i][6], triangles[i][7], -triangles[i][8]));
 		triangleGeometry.faces.push(new THREE.Face3(0, 1, 2));
 		var triangleMaterial = new THREE.MeshBasicMaterial({
 			color:parseInt(colors[tcolors[i]], 16),
 			side:THREE.DoubleSide
 		});
 		var triangleMesh = new THREE.Mesh(triangleGeometry, triangleMaterial);
-		triangleMesh.position.set(-1.5, 0.0, 4.0);
+		triangleMesh.position.set(0.0, 0.0, 0.0);
 		scene.add(triangleMesh);
 	}
 	
